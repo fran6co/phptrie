@@ -27,17 +27,34 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 namespace PHPTrie;
 
+/**
+ * Class Trie
+ *
+ * @package PHPTrie
+ */
 class Trie
 {
     private $trie = array();
     private $value = null;
 
+    /**
+     * Trie constructor
+     *
+     * @param mixed $value This is for internal use
+     */
     public function Trie($value = null)
     {
         $this->value = $value;
     }
 
-    public function add($string,$value,$overWrite=true)
+    /**
+     * Add value to the trie
+     *
+     * @param $string The key
+     * @param $value The value
+     * @param bool $overWrite Overwrite existing value
+     */
+    public function add($string, $value, $overWrite=true)
     {
         if (empty($string)) {
             if (is_null($this->value) || $overWrite) {
@@ -90,31 +107,13 @@ class Trie
         $this->trie[$string] = new Trie($value);
     }
 
-    private function searchTrie($string)
-    {
-        if (empty($string)) {
-            return array($string,$this);
-        }
-
-        $stringLength = strlen($string);
-        foreach ($this->trie as $prefix => $trie) {
-            $prefixLength = strlen($prefix);
-            if ($prefixLength > $stringLength) {
-                $prefix = substr($prefix,0,$stringLength);
-                if ($prefix == $string) {
-                    return array($string,$this);
-                }
-            }
-            $head = substr($string,0,$prefixLength);
-
-            if ($head == $prefix) {
-                return $trie->searchTrie(substr($string,$prefixLength));
-            }
-        }
-
-        return null;
-    }
-
+    /**
+     * Search the Trie with a string
+     *
+     * @param $string The string search
+     *
+     * @return mixed The value
+     */
     public function search($string)
     {
         if (empty($string)) {
@@ -133,7 +132,15 @@ class Trie
         return null;
     }
 
-    public function searchMultiple($array,$delimeter=' ')
+    /**
+     * Search with multiple keys
+     *
+     * @param array  $array     The array of keys
+     * @param string $delimeter
+     *
+     * @return mixed The value
+     */
+    public function searchMultiple(array $array, $delimeter=' ')
     {
         $size = count($array);
         $value = null;
@@ -160,6 +167,31 @@ class Trie
 
             if (!is_null($value)) {
                 return $value;
+            }
+        }
+
+        return null;
+    }
+
+    private function searchTrie($string)
+    {
+        if (empty($string)) {
+            return array($string,$this);
+        }
+
+        $stringLength = strlen($string);
+        foreach ($this->trie as $prefix => $trie) {
+            $prefixLength = strlen($prefix);
+            if ($prefixLength > $stringLength) {
+                $prefix = substr($prefix,0,$stringLength);
+                if ($prefix == $string) {
+                    return array($string,$this);
+                }
+            }
+            $head = substr($string,0,$prefixLength);
+
+            if ($head == $prefix) {
+                return $trie->searchTrie(substr($string,$prefixLength));
             }
         }
 
