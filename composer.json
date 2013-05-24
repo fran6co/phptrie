@@ -1,9 +1,9 @@
 {
-    "name": "fran6co/PHPTrie",
+    "name": "fran6co/phptrie",
     "minimum-stability": "dev",
     "description": "PHP Trie implementation",
     "keywords": [ "trie", "data structure", "search" ],
-    "homepage": "https://github.com/fran6co/PHPTrie",
+    "homepage": "https://github.com/fran6co/phptrie",
     "type": "library",
     "license": "BSD",
     "authors": [
