@@ -42,7 +42,7 @@ class Trie
      *
      * @param mixed $value This is for internal use
      */
-    public function Trie($value = null)
+    public function __construct($value = null)
     {
         $this->value = $value;
     }
