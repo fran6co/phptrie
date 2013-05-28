@@ -36,7 +36,7 @@ or
 
 Your values should probably have a consistent type throughout the whole trie, but exactly how you structure your values is up to you.
 
-**From here on, we will assume that the FileTrie object has been constructed and is called `$trie`.**
+**From here on, we will assume that the PHPTrie object has been constructed and is called `$trie`.**
 
 **Overwrite values**
 
