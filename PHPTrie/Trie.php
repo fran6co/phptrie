@@ -65,6 +65,7 @@ class Trie
         }
 
         foreach ($this->trie as $prefix => $trie) {
+            $prefix = (string)$prefix;
             $prefixLength = strlen($prefix);
             $head = substr($string,0,$prefixLength);
             $headLength = strlen($head);
@@ -121,10 +122,11 @@ class Trie
         }
 
         foreach ($this->trie as $prefix => $trie) {
+            $prefix = (string)$prefix;
             $prefixLength = strlen($prefix);
             $head = substr($string,0,$prefixLength);
 
-            if ($head == $prefix) {
+            if ($head === $prefix) {
                 return $trie->search(substr($string,$prefixLength));
             }
         }
@@ -181,16 +183,17 @@ class Trie
 
         $stringLength = strlen($string);
         foreach ($this->trie as $prefix => $trie) {
+            $prefix = (string)$prefix;
             $prefixLength = strlen($prefix);
             if ($prefixLength > $stringLength) {
                 $prefix = substr($prefix,0,$stringLength);
-                if ($prefix == $string) {
+                if ($prefix === $string) {
                     return array($string,$this);
                 }
             }
             $head = substr($string,0,$prefixLength);
 
-            if ($head == $prefix) {
+            if ($head === $prefix) {
                 return $trie->searchTrie(substr($string,$prefixLength));
             }
         }
