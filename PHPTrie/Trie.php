@@ -50,9 +50,9 @@ class Trie
     /**
      * Add value to the trie
      *
-     * @param $string The key
-     * @param $value The value
-     * @param bool $overWrite Overwrite existing value
+     * @param string $string    The key
+     * @param string $value     The value
+     * @param bool   $overWrite Overwrite existing value
      */
     public function add($string, $value, $overWrite=true)
     {
