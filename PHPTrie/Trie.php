@@ -200,4 +200,12 @@ class Trie
 
         return null;
     }
+
+    public static function __set_state($state)
+    {
+        $t = new self;
+        $t->trie = $state['trie'];
+        $t->value = $state['value'];
+        return $t;
+    }
 }
