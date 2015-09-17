@@ -56,7 +56,7 @@ class Trie
      */
     public function add($string, $value, $overWrite=true)
     {
-        if (empty($string)) {
+        if ($string === "") {
             if (is_null($this->value) || $overWrite) {
                 $this->value = $value;
             }
