@@ -34,7 +34,7 @@ namespace PHPTrie;
  */
 class Trie
 {
-    public $trie = array();
+    private $trie = array();
     private $value = null;
 
     /**
@@ -50,9 +50,9 @@ class Trie
     /**
      * Add value to the trie
      *
-     * @param $string The key
-     * @param $value The value
-     * @param bool $overWrite Overwrite existing value
+     * @param string $string    The key
+     * @param mixed  $value     The value
+     * @param bool   $overWrite Overwrite existing value
      */
     public function add($string, $value, $overWrite=true)
     {
@@ -208,5 +208,4 @@ class Trie
         $t->value = $state['value'];
         return $t;
     }
-
 }
