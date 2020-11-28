@@ -56,7 +56,7 @@ class Trie
      */
     public function add($string, $value, $overWrite=true)
     {
-        if ($string === "") {
+        if ($string === '' || $string === null || $string === false) {
             if (is_null($this->value) || $overWrite) {
                 $this->value = $value;
             }
@@ -117,7 +117,7 @@ class Trie
      */
     public function search($string)
     {
-        if (empty($string)) {
+        if ($string === '' || $string === null || $string === false) {
             return $this->value;
         }
 
@@ -177,7 +177,7 @@ class Trie
 
     private function searchTrie($string)
     {
-        if (empty($string)) {
+        if ($string === '' || $string === null || $string === false) {
             return array($string,$this);
         }
 
