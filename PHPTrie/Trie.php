@@ -34,7 +34,7 @@ namespace PHPTrie;
  */
 class Trie
 {
-    private $trie = array();
+    public $trie = array();
     private $value = null;
 
     /**
@@ -50,13 +50,13 @@ class Trie
     /**
      * Add value to the trie
      *
-     * @param string $string    The key
-     * @param mixed  $value     The value
-     * @param bool   $overWrite Overwrite existing value
+     * @param $string The key
+     * @param $value The value
+     * @param bool $overWrite Overwrite existing value
      */
     public function add($string, $value, $overWrite=true)
     {
-        if ($string === "") {
+        if ($string === '' || $string === null || $string === false) {
             if (is_null($this->value) || $overWrite) {
                 $this->value = $value;
             }
@@ -117,7 +117,7 @@ class Trie
      */
     public function search($string)
     {
-        if (empty($string)) {
+        if ($string === '' || $string === null || $string === false) {
             return $this->value;
         }
 
@@ -177,7 +177,7 @@ class Trie
 
     private function searchTrie($string)
     {
-        if (empty($string)) {
+        if ($string === '' || $string === null || $string === false) {
             return array($string,$this);
         }
 
@@ -208,4 +208,5 @@ class Trie
         $t->value = $state['value'];
         return $t;
     }
+
 }
